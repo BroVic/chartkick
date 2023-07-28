@@ -1,2 +1,2 @@
 # chartkick
-What the Package Does (One Line, Title Case)
+This is an implementation of the Chartkick.js library in R using the htmlwidgets framework.
