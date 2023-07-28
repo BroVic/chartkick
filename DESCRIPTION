@@ -10,5 +10,11 @@ Encoding: UTF-8
 Language: es
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.3
+Imports:
+    htmlwidgets,
+    assertthat
+Suggests:
+    knitr,
+    testthat
 URL: https://github.com/BWOlatunji/chartkick
 BugReports: https://github.com/BWOlatunji/chartkick/issues
