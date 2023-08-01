@@ -70,6 +70,7 @@ chartkick <- function(data,
     thousands = thousands
   )
 
+  # apply(data, 1, as list) |> lapply(unname)
 
   x = list(
     data = data,
