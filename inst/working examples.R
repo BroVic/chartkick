@@ -65,44 +65,6 @@ bar_st_data <- jsonlite::toJSON(bar_st_data) # worked with chartkick
 chartkick(data = bar_st_data,type = "BarChart", stacked = TRUE)
 
 
-# Load required libraries
-library(jsonlite)
-library(tidyr)
-
-# Input JSON data
-json_data <- '{"2021-01-01": 11, "2021-01-02": 6}'
-
-# convert data to list of list
-list_data <- jsonlite::fromJSON(json_data)
-
-# Convert JSON to data frame
-df <- data.frame(list_data)
-
-# Rename columns for better representation
-names(df) <- c("Date", "Value")
-
-# Convert the data to long-form
-long_form_df <- tidyr::pivot_longer(df, key = "Date", value = "Value", -1)
-
-# Custom function to convert R data frame to D3-compatible format
-dataframeToD3 <- function(df) {
-  # Convert the data frame to a list of lists
-  data_list <- lapply(seq_len(nrow(df)), function(i) as.list(unname(df[i,])))
-
-  # Convert the list to JSON
-  json_data <- jsonlite::toJSON(data_list)
-
-  # Return the JSON string
-  return(json_data)
-}
-
-# Transform the data frame to D3-compatible format
-d3_data <- dataframeToD3(long_form_df)
-
-# Print the D3-compatible data (JSON string)
-cat(d3_data)
-
-
 
 
 
