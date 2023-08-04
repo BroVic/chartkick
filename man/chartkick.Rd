@@ -6,6 +6,8 @@
 \usage{
 chartkick(
   data,
+  xcol,
+  ycol,
   type = "LineChart",
   min = 0,
   max = NULL,
@@ -31,6 +33,10 @@ chartkick(
 }
 \arguments{
 \item{data}{data.frame containing data series}
+
+\item{xcol}{column name containing values on the x-axis}
+
+\item{ycol}{column name containing values on the y-axis}
 
 \item{type}{chart type name i.e. LineChart}
 

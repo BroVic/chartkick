@@ -3,6 +3,8 @@
 #' chartkick is an R package to draw charts based on Chartkick.js JavaScript Library
 #'
 #' @param data data.frame containing data series
+#' @param xcol column name containing values on the x-axis
+#' @param ycol column name containing values on the y-axis
 #' @param type chart type name i.e. LineChart
 #' @param width chart's width
 #' @param height chart's height
@@ -30,7 +32,7 @@
 #' @name chartkick
 #'
 #' @export
-chartkick <- function(data,
+chartkick <- function(data, xcol, ycol,
                       type = "LineChart",min = 0,max = NULL,xmin = NULL,
                       xmax = NULL,colors = list(),stacked = FALSE,
                       discrete = FALSE,label = NULL,xtitle = NULL,
@@ -70,10 +72,11 @@ chartkick <- function(data,
     thousands = thousands
   )
 
-  # apply(data, 1, as list) |> lapply(unname)
+  # process data
+  json_data <- process_data(data = data, x = xcol, y = ycol)
 
   x = list(
-    data = data,
+    data = json_data,
     type = type,
     options = options
   )
