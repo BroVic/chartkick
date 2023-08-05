@@ -6,8 +6,8 @@
 \usage{
 chartkick(
   data,
-  xcol,
-  ycol,
+  xcol = NULL,
+  ycol = NULL,
   type = "LineChart",
   min = 0,
   max = NULL,
@@ -21,7 +21,7 @@ chartkick(
   ytitle = NULL,
   curve = FALSE,
   points = TRUE,
-  legend = NULL,
+  legend = TRUE,
   donut = FALSE,
   prefix = NULL,
   suffix = NULL,
@@ -34,11 +34,11 @@ chartkick(
 \arguments{
 \item{data}{data.frame containing data series}
 
-\item{xcol}{column name containing values on the x-axis}
+\item{xcol}{string representing the column name containing values on the x-axis}
 
-\item{ycol}{column name containing values on the y-axis}
+\item{ycol}{string representing the column name containing values on the y-axis}
 
-\item{type}{chart type name i.e. LineChart}
+\item{type}{string representing the chart type name i.e. "LineChart"}
 
 \item{min}{minimum value on the y-axis}
 
@@ -50,7 +50,7 @@ chartkick(
 
 \item{colors}{list of colors}
 
-\item{stacked}{stacked columns or bars}
+\item{stacked}{boolean value stacked columns or bars}
 
 \item{discrete}{discrete axis}
 

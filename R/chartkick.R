@@ -3,9 +3,9 @@
 #' chartkick is an R package to draw charts based on Chartkick.js JavaScript Library
 #'
 #' @param data data.frame containing data series
-#' @param xcol column name containing values on the x-axis
-#' @param ycol column name containing values on the y-axis
-#' @param type chart type name i.e. LineChart
+#' @param xcol string representing the column name containing values on the x-axis
+#' @param ycol string representing the column name containing values on the y-axis
+#' @param type string representing the chart type name i.e. "LineChart"
 #' @param width chart's width
 #' @param height chart's height
 #' @param elementId html element id
@@ -14,7 +14,7 @@
 #' @param xmin minimum value on the y-axis
 #' @param xmax maximum value on the y-axis
 #' @param colors list of colors
-#' @param stacked stacked columns or bars
+#' @param stacked boolean value stacked columns or bars
 #' @param discrete discrete axis
 #' @param label for single series
 #' @param xtitle x-axis title
@@ -32,12 +32,12 @@
 #' @name chartkick
 #'
 #' @export
-chartkick <- function(data, xcol, ycol,
+chartkick <- function(data, xcol = NULL, ycol = NULL,
                       type = "LineChart",min = 0,max = NULL,xmin = NULL,
                       xmax = NULL,colors = list(),stacked = FALSE,
                       discrete = FALSE,label = NULL,xtitle = NULL,
                       ytitle = NULL,curve = FALSE,points = TRUE,
-                      legend = NULL,donut = FALSE,prefix = NULL,
+                      legend = TRUE,donut = FALSE,prefix = NULL,
                       suffix = NULL,thousands = ",",width = NULL,
                       height = NULL,elementId = NULL) {
 

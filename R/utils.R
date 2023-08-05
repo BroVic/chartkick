@@ -7,7 +7,7 @@
 #'
 #' @import assertthat jsonlite dplyr
 #'
-process_data <- function(data, x, y){
+process_data <- function(data, x = NULL, y = NULL){
   if (!is.data.frame(data)) {
     stop("chartkick: 'data' must be a data.frame",
          call. = FALSE)
@@ -15,8 +15,13 @@ process_data <- function(data, x, y){
 
   row.names(data) <- NULL
 
-  df = data |>
-    dplyr::select({{ x }}, {{ y }})
+  df = data
+
+  if(!is.null(x) & !is.null(y)){
+    df = df |>
+      dplyr::select({{ x }}, {{ y }})
+  }
+
   # Remove the column names
   colnames(df) <- NULL
 
