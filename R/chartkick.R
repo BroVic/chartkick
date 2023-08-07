@@ -73,13 +73,14 @@ chartkick <- function(data, xcol = NULL, ycol = NULL,
   )
 
   # process data
-  json_data <- process_data(data = data, x = xcol, y = ycol)
+  chart_data <- process_data(data = data, x = xcol, y = ycol)
 
   x = list(
-    data = json_data,
+    data = chart_data,
     type = type,
     options = options
   )
+
 
   # create widget
   htmlwidgets::createWidget(
