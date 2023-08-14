@@ -12,9 +12,20 @@ linechart_df <- data.frame(dates = c("May 13, 2023", "May 14, 2023", "May 15, 20
                                      "May 31, 2023"),
                            values = c(2, 5, 3, 8, 6, 6, 12, 5, 5, 3, 1, 6, 1, 3, 2, 3, 2, 8, 5))
 
-chartkick(data = linechart_df,
+# line_data <- jsonlite::fromJSON('{"2021-02-10":11,"2021-02-11":6,"2021-02-12":3,"2021-02-13":2,"2021-02-14":5,"2021-02-15":3,"2021-02-16":8,"2021-02-17":6,"2021-02-18":6,"2021-02-19":12,"2021-02-20":5,"2021-02-21":5,"2021-02-22":3,"2021-02-23":1,"2021-02-24":10,"2021-02-25":1,"2021-02-26":3,"2021-02-27":2,"2021-02-28":3,"2021-03-01":2,"2021-03-02":8}')
+
+line_data <- jsonlite::fromJSON('{"10":11,"11":6,"12":3,"13":2,"14":5,"15":3,"16":8,"17":6,
+                                "18":6,"19":12,"20":5,"21":5,"22":3,"23":1,"24":10,
+                                "25":1,"26":3,"27":2,"28":3,"01":2,"02":8}')
+
+# error - data must be a data.frame
+chartkick(data = line_data,
           type = "LineChart",curve = TRUE,
           colors = list("green"), label = "Value")
+
+# chartkick(data = linechart_df,
+#           type = "LineChart",curve = TRUE,
+#           colors = list("green"), label = "Value")
 
 chartkick(data = linechart_df, xcol = "dates",
           ycol = "values", curve = TRUE, type = "LineChart")

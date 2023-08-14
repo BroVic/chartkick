@@ -14,7 +14,9 @@ Imports:
     htmlwidgets,
     assertthat,
     dplyr,
-    jsonlite
+    tidyr,
+    jsonlite,
+    magrittr
 Suggests:
     knitr,
     testthat (>= 3.0.0)
