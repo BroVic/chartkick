@@ -14,11 +14,11 @@ ui <- fluidPage(
     # Sidebar with a slider input for number of bins
     sidebarLayout(
         sidebarPanel(
-            chartkick::chartkickOutput(outputId = "ck1")),
+            ),
 
         # Show a plot of the generated distribution
         mainPanel(
-           plotOutput("distPlot")
+            chartkick::chartkickOutput(outputId = "ck1")
         )
     )
 )
@@ -27,7 +27,9 @@ ui <- fluidPage(
 server <- function(input, output) {
 
     output$ck1 <- renderChartkick({
-
+        chartkick(data = unnested_task_tbl, xcol = "date", ycol = "value",
+                  group ="name", type = "LineChart",min = 0,max = 10,
+                  xmin = "2021-02-10", xmax = "2021-03-31",label = "value")
     })
 }
 

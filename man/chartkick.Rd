@@ -8,6 +8,7 @@ chartkick(
   data,
   xcol = NULL,
   ycol = NULL,
+  group = NULL,
   type = "LineChart",
   min = 0,
   max = NULL,
@@ -37,6 +38,8 @@ chartkick(
 \item{xcol}{string representing the column name containing values on the x-axis}
 
 \item{ycol}{string representing the column name containing values on the y-axis}
+
+\item{group}{string representing the column name used for grouping}
 
 \item{type}{string representing the chart type name i.e. "LineChart"}
 

@@ -5,6 +5,7 @@
 #' @param data data.frame containing data series
 #' @param xcol string representing the column name containing values on the x-axis
 #' @param ycol string representing the column name containing values on the y-axis
+#' @param group string representing the column name used for grouping
 #' @param type string representing the chart type name i.e. "LineChart"
 #' @param width chart's width
 #' @param height chart's height
@@ -32,7 +33,7 @@
 #' @name chartkick
 #'
 #' @export
-chartkick <- function(data, xcol = NULL, ycol = NULL,
+chartkick <- function(data, xcol = NULL, ycol = NULL, group=NULL,
                       type = "LineChart",min = 0,max = NULL,xmin = NULL,
                       xmax = NULL,colors = list(),stacked = FALSE,
                       discrete = FALSE,label = NULL,xtitle = NULL,
@@ -73,7 +74,7 @@ chartkick <- function(data, xcol = NULL, ycol = NULL,
   )
 
   # process data
-  chart_data <- process_data(data = data, x = xcol, y = ycol)
+  chart_data <- process_data(data = data, x = xcol, y = ycol, group = group)
 
   x = list(
     data = chart_data,

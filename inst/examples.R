@@ -19,9 +19,9 @@ line_data <- jsonlite::fromJSON('{"10":11,"11":6,"12":3,"13":2,"14":5,"15":3,"16
                                 "25":1,"26":3,"27":2,"28":3,"01":2,"02":8}')
 
 # error - data must be a data.frame
-chartkick(data = line_data,
-          type = "LineChart",curve = TRUE,
-          colors = list("green"), label = "Value")
+# chartkick(data = line_data,
+#           type = "LineChart",curve = TRUE,
+#           colors = list("green"), label = "Value")
 
 # chartkick(data = linechart_df,
 #           type = "LineChart",curve = TRUE,

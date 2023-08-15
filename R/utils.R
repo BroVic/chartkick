@@ -10,10 +10,14 @@
 #'
 process_data <- function(data = NULL,x = NULL, y = NULL, group = NULL){
 
-  data <- clean_names(data)
   if (!is.data.frame(data)) {
     stop("chartkick: 'data' must be a data.frame",
          call. = FALSE)
+  }
+
+  # convert missing data to empty data frame
+  if (missing(data)) {
+    data <- data.frame()
   }
 
   if(!is.null(data) & is.null(x) & is.null(y) & is.null(group)){
@@ -39,7 +43,6 @@ process_data <- function(data = NULL,x = NULL, y = NULL, group = NULL){
 
     groups <- as.character(unique(data[[group]]))
 
-    tidyr::pivot_longer()
     data <- data |>
       tidyr::pivot_wider(names_from = x, values_from = y) |>
       tidyr::nest(data = as.character(unique(data[[x]])))
@@ -56,12 +59,6 @@ process_data <- function(data = NULL,x = NULL, y = NULL, group = NULL){
   return(json_data)
 }
 
-clean_names <- function(data){
-  # check for and replace '.' in column names
-  names(data) <- gsub('\\.', '_', names(data))
-
-  return(data)
-}
 
 #' @importFrom magrittr %>%
 #' @export
