@@ -15,6 +15,7 @@ Imports:
     assertthat,
     dplyr,
     tidyr,
+    tibble,
     jsonlite,
     magrittr
 Suggests:

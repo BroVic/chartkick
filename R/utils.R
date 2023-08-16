@@ -43,9 +43,11 @@ process_data <- function(data = NULL,x = NULL, y = NULL, group = NULL){
 
     groups <- as.character(unique(data[[group]]))
 
-    data <- data |>
+    data_values <- data |>
       tidyr::pivot_wider(names_from = x, values_from = y) |>
       tidyr::nest(data = as.character(unique(data[[x]])))
+
+    data <- tibble::tibble(name = groups, data = data_values)
 
   } else {
 

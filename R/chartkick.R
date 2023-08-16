@@ -34,7 +34,7 @@
 #'
 #' @export
 chartkick <- function(data, xcol = NULL, ycol = NULL, group=NULL,
-                      type = "LineChart",min = 0,max = NULL,xmin = NULL,
+                      type = NULL,min = 0,max = NULL,xmin = NULL,
                       xmax = NULL,colors = list(),stacked = FALSE,
                       discrete = FALSE,label = NULL,xtitle = NULL,
                       ytitle = NULL,curve = FALSE,points = TRUE,

@@ -9,7 +9,7 @@ chartkick(
   xcol = NULL,
   ycol = NULL,
   group = NULL,
-  type = "LineChart",
+  type = NULL,
   min = 0,
   max = NULL,
   xmin = NULL,
