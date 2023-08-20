@@ -56,7 +56,7 @@ process_data <- function(data = NULL,x = NULL, y = NULL, group = NULL){
   }
 
   # Convert the data frame to JSON
-  json_data = jsonlite::toJSON(data, dataframe = 'rows')
+  json_data = jsonlite::toJSON(data) #, dataframe = 'rows')
 
   return(json_data)
 }
