@@ -5,9 +5,9 @@
 \title{Draw Chartkick.js chart in R powered by htmlwidgets}
 \usage{
 chartkick(
-  data,
-  xcol = NULL,
-  ycol = NULL,
+  data = NULL,
+  x_axis = NULL,
+  y_axis = NULL,
   group = NULL,
   type = NULL,
   min = 0,
@@ -35,9 +35,9 @@ chartkick(
 \arguments{
 \item{data}{data.frame containing data series}
 
-\item{xcol}{string representing the column name containing values on the x-axis}
+\item{x_axis}{string representing the column name containing values on the x-axis}
 
-\item{ycol}{string representing the column name containing values on the y-axis}
+\item{y_axis}{string representing the column name containing values on the y-axis}
 
 \item{group}{string representing the column name used for grouping}
 

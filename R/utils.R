@@ -1,6 +1,5 @@
 #' Preprocess data frame
 #'
-#'
 #' @param data A data frame
 #' @param x string value of column name containing values on the x-axis
 #' @param y string value of column name containing values on the y-axis
@@ -9,7 +8,6 @@
 #' @import assertthat jsonlite dplyr
 #'
 process_data <- function(data = NULL,x = NULL, y = NULL, group = NULL){
-
   if (!is.data.frame(data)) {
     stop("chartkick: 'data' must be a data.frame",
          call. = FALSE)
@@ -19,7 +17,6 @@ process_data <- function(data = NULL,x = NULL, y = NULL, group = NULL){
   if (missing(data)) {
     data <- data.frame()
   }
-
   if(!is.null(data) & is.null(x) & is.null(y) & is.null(group)){
 
     colnames(data) <- NULL
@@ -27,7 +24,7 @@ process_data <- function(data = NULL,x = NULL, y = NULL, group = NULL){
   } else if (!is.null(x) & !is.null(y) & is.null(group)) {
 
     # select ONLY x and y columns
-    data <- data |> dplyr::select(x,y)
+    data <- data |> dplyr::select({x},{y})
     #data[, c(x,y)]
     # Remove the column names
     colnames(data) <- NULL
@@ -37,17 +34,16 @@ process_data <- function(data = NULL,x = NULL, y = NULL, group = NULL){
     # if group is defined, then x and y must be specified
     stopifnot(!is.null(x) & !is.null(y))
 
-    # select ONLY x,y,group columns
-    data <- data |> dplyr::select(x, y, group)
-    #data[, c(x, y, group)]
+    # groups <- as.character(unique(data[[group]]))
 
-    groups <- as.character(unique(data[[group]]))
+    # select ONLY x_axis,y_axis,groups columns
+    nest_vec <- c(unique(data[[{x}]]))
+    data <- data |> dplyr::select({group},{x},{y}) |>
+      dplyr::rename(name= {group}) |>
+      tidyr::pivot_wider(names_from = {x}, values_from = {y}) |>
+      tidyr::nest(data = nest_vec)
 
-    data_values <- data |>
-      tidyr::pivot_wider(names_from = x, values_from = y) |>
-      tidyr::nest(data = as.character(unique(data[[x]])))
-
-    data <- tibble::tibble(name = groups, data = data_values)
+    # data <- tibble::tibble(name = groups, data = data_values)
 
   } else {
 
@@ -59,6 +55,7 @@ process_data <- function(data = NULL,x = NULL, y = NULL, group = NULL){
   json_data = jsonlite::toJSON(data) #, dataframe = 'rows')
 
   return(json_data)
+
 }
 
 
@@ -66,4 +63,26 @@ process_data <- function(data = NULL,x = NULL, y = NULL, group = NULL){
 #' @export
 magrittr::`%>%`
 
+
+# Convert a data.frame to a list of lists (the data format that D3 uses)
+dataframeToD3 <- function(df) {
+  if (missing(df) || is.null(df)) {
+    return(list())
+  }
+  if (!is.data.frame(df)) {
+    stop("chartkick: the input must be a dataframe", call. = FALSE)
+  }
+  df <- as.data.frame(df)
+  row.names(df) <- NULL
+  lapply(seq_len(nrow(df)), function(row) {
+    row <- df[row, , drop = FALSE]
+    row_not_na <- row[, !is.na(row), drop = FALSE]
+    lapply(row_not_na, function(x) {
+      if (!lengths(x)) return(NA)
+      if (is.logical(x)) return(x)
+      if (lengths(x) > 1 | is.list(x)) return(lapply(unlist(x),as.character))
+      return(as.character(x))
+    })
+  })
+}
 

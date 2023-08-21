@@ -23,6 +23,10 @@ HTMLWidgets.widget({
               new Chartkick.PieChart(el, x.data,
               x.options)
               break;
+            case 'DonutChart':
+              new Chartkick.PieChart(el, x.data,
+              x.options)
+              break;
             case 'ColumnChart':
               new Chartkick.ColumnChart(el, x.data,
               x.options)
@@ -37,6 +41,10 @@ HTMLWidgets.widget({
               break;
             case 'ScatterChart':
               new Chartkick.ScatterChart(el, x.data,
+              x.options)
+              break;
+            case 'BubbleChart':
+              new Chartkick.BubbleChart(el,x.data,
               x.options)
               break;
             case 'GeoChart':
