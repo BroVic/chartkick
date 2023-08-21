@@ -1,5 +1,6 @@
 # Load the jsonlite package
 library(jsonlite)
+library(chartkick)
 
 # line chart
 
