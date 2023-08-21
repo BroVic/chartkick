@@ -1,5 +1,5 @@
 Package: chartkick
-Title: What the Package Does (One Line, Title Case)
+Title: Chartkick htmlwidget
 Version: 0.0.0.9000
 Authors@R: 
     person("Bilikisu", "Olatunji", , "bilqiiswunmi@gmail.com", role = c("aut", "cre"),
