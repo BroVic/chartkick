@@ -43,7 +43,8 @@ chartkick(data = linechart_df, x_axis = "dates",
 ```
 
 ## Example 2 - Discrete Line Chart 
-```
+
+``` r
 discrete_line_data = jsonlite::fromJSON('[["United States",44],["Germany",23],["Brazil",22],["Canada",21],["France",13]]')
 
 dl_df <- as.data.frame(discrete_line_data)
@@ -51,11 +52,12 @@ dl_df <- as.data.frame(discrete_line_data)
 chartkick(data = dl_df, x_axis = "V1",
           y_axis = "V2", curve = TRUE, legend = FALSE, type = "LineChart")
 
-```
+``` 
 
 ## Example 3 - Discrete Line Chart Numeric String
 
-```
+``` r
+
 discrete_line_ns_data = jsonlite::fromJSON('[["26",4],["25",8],["24",0],["23",2],["22",2],["21",1],["20",3],["19",5],["18",8],["17",1],["16",3],["15",1],["14",2],["13",5],["12",7],["11",9],["10",1],["9",6],["8",4],["7",0],["6",3],["5",9],["4",8],["3",0],["2",5],["1",2]]')
 
 dlns_df <- as.data.frame(discrete_line_ns_data)
@@ -69,7 +71,7 @@ chartkick(data = dlns_df, x_axis = "V1",
 
 ## Example 4 - Multiple Series Line
 
-```
+``` r
 msl_df <- jsonlite::fromJSON(jsonNormalize::jsonNormalize('[{"name":"Workout","data":{"2021-02-10":3,"2021-02-17":3,"2021-02-24":3,"2021-03-03":1,"2021-03-10":4,"2021-03-17":3,"2021-03-24":2,"2021-03-31":3}},
               {"name":"Go to concert","data":{"2021-02-10":0,"2021-02-17":0,"2021-02-24":0,"2021-03-03":0,"2021-03-10":2,"2021-03-17":1,"2021-03-24":0,"2021-03-31":0}},
               {"name":"Wash face","data":{"2021-02-10":0,"2021-02-17":1,"2021-02-24":0,"2021-03-03":0,"2021-03-10":0,"2021-03-17":1,"2021-03-24":0,"2021-03-31":1}},
@@ -90,7 +92,7 @@ chartkick(data = msl_tbl, x_axis = "date", y_axis = "value",
 
 ## Example 5 - Pie Chart
 
-```
+``` r
 pie_data = jsonlite::fromJSON('[["Blueberry", 44], ["Strawberry", 23],["Banana",22],["Apple",21],["Grape",13]]')
 
 pc_df <- as.data.frame(pie_data)
@@ -105,7 +107,7 @@ chartkick::chartkick(data = pc_df, x_axis = "V1", y_axis = "V2",
 
 ## Example 6 - Donut Chart
 
-```
+``` r
 donut_data <- jsonlite::fromJSON('[["Blueberry",44],["Strawberry",23],["Banana",22],["Apple",21],["Grape",13]]')
 
 donut_df <- as.data.frame(donut_data)
@@ -119,7 +121,7 @@ chartkick::chartkick(data = donut_df, x_axis = "V1", y_axis = "V2",
 
 ## Example 7 - Column Chart
 
-```
+``` r
 col_data = jsonlite::fromJSON('[["Sun", 32], ["Mon", 46], ["Tue", 28]]')
 cc_df <- as.data.frame(col_data)
 chartkick::chartkick(data = cc_df, x_axis = "V1", y_axis = "V2", type = "ColumnChart",legend = FALSE, colors = list("purple", "red", "green"))
@@ -129,7 +131,7 @@ chartkick::chartkick(data = cc_df, x_axis = "V1", y_axis = "V2", type = "ColumnC
 
 ## Example 8 - Bar Chart
 
-```
+``` r
 bar_data <- jsonlite::fromJSON('[["0",32],["1",46],["2",28],["3",21],["4",20],["5",13],["6",27]]')
 bd_df <- as.data.frame(bar_data)
 chartkick::chartkick(data = bd_df, x_axis = "V1", y_axis = "V2",type = "BarChart", legend = FALSE, colors = list("green","red"))
@@ -139,7 +141,7 @@ chartkick::chartkick(data = bd_df, x_axis = "V1", y_axis = "V2",type = "BarChart
 
 ## Example 9 - Area Chart
 
-```
+``` r
 area_data <- jsonlite::fromJSON('{"2021-02-10":11,"2021-02-11":6,"2021-02-12":3,"2021-02-13":2,"2021-02-14":5,"2021-02-15":3,"2021-02-16":8,"2021-02-17":6,"2021-02-18":6,"2021-02-19":12,"2021-02-20":5,"2021-02-21":5,"2021-02-22":3,"2021-02-23":1,"2021-02-24":10,"2021-02-25":1,"2021-02-26":3,"2021-02-27":2,"2021-02-28":3,"2021-03-01":2,"2021-03-02":8}')
 ac_df <- data.frame(Date = names(area_data), Value = unlist(area_data))
 
@@ -151,7 +153,7 @@ chartkick::chartkick(data = ac_df, x_axis = "Date", y_axis = "Value",
 
 ## Example 10 - Discrete Area Chart
 
-```
+``` r
 discrete_area_data <- jsonlite::fromJSON('[["United States",44],["Germany",23],["Brazil",22],["Canada",21],["France",13]]')
 
 dac_df <- data.frame(discrete_area_data)
@@ -163,7 +165,7 @@ chartkick::chartkick(data = dac_df, x_axis = "X1", y_axis = "X2",
 
 ## Example 11 - Scatter Chart
 
-```
+``` r
 scatter_data <- jsonlite::fromJSON('[[174.0, 80.0], [176.5, 82.3], [180.3, 73.6], [167.6, 74.1], [188.0, 85.9]]')
 class(scatter_data) # "matrix" "array"
 
@@ -178,7 +180,7 @@ chartkick::chartkick(data = sc_df, x_axis = "V1", y_axis = "V2",
 
 ## Example 12 - Geo Chart
 
-```
+``` r
 geo_data <- jsonlite::fromJSON('[["United States",44],["Germany",23],["Brazil",22],["Canada",21],["France",13]]')
 class(geo_data)
 
@@ -191,7 +193,8 @@ chartkick::chartkick(data = gc_df, type = "GeoChart")
 
 ## Example 13 - Timeline Chart
 
-```
+``` r
+
 timeline_data <- jsonlite::fromJSON('[["Washington", "1789-04-29", "1797-03-03"], ["Adams", "1797-03-03", "1801-03-03"]]')
 
 class(timeline_data)
