@@ -42,5 +42,5 @@ chartkick(data = linechart_df, x_axis = "dates",
 ```
 
 ## References:
-[Chart Examples](https://ankane.github.io/chartkick.js/examples/)
-[Installation and Data formats](https://github.com/ankane/chartkick.js#installation)
+- [Chart Examples](https://ankane.github.io/chartkick.js/examples/)
+- [Installation and Data formats](https://github.com/ankane/chartkick.js#installation)
